@@ -2,16 +2,15 @@
 {% block content %}    
 <h1>Welcome To The Pokemon Universe</h1>
 <hr>
-<div class="input-group">
-    
-    <div class="form-outline">
-        {form.search_pokemon(class="form-control", placeholder="Choose Your Pokemon"}}
-      <input type="search" id="form1" class="form-control" placeholder="choose pokemon" />
-      
-    </div>
-    <button type="button" class="btn btn-primary">
-      <i class="fas fa-search"></i>
-    </button>
+<form method ="POST">
+  <div class="input-group">  
+  <div class="form-outline">
+    {{form.search_pokemon(class="form-control", placeholder="Choose Your Pokemon")}}
   </div>
+  <button type="button" class="btn btn-primary">
+    <i class={{form.search}}></i>
+  </button>
+  </div>
+</form>
 <p>Click the link to claim your Pokemon <a href="/signup">Signup</a></p>
 {% endblock %}

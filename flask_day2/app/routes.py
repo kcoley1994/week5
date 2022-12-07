@@ -8,10 +8,10 @@ from app.forms import UserSearch
 @app.route('/')
 @app.route('/home')
 def home():
-    search = UserSearch()
+    form = UserSearch()
     
     
-    return render_template('index.html',form=search)
+    return render_template('index.html',form=form)
 
 
 

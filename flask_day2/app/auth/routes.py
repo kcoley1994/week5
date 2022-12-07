@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from app.auth.forms import UserCreationForm, UserLoginForm
-from app.models import User, db 
+from app.models import User
+from werkzeug.security import check_password_hash
 
 
 auth = Blueprint('auth',__name__, template_folder='auth_templates')
@@ -18,7 +19,7 @@ def signup():
             email = form.email.data
             password = form.password.data
 
-            print(first_name, last_name, username, email, password)
+            flash('Sign up Complete', 'success')
             user = User(first_name, last_name, username, email, password)
             
             user.save_to_db()
@@ -37,13 +38,14 @@ def login():
             user = User.query.filter_by(username=username).first()
             
             if user:
-                if password == user.password:
+                if check_password_hash(user.password, password):
                     login_user(user)
-                    print()
+                    flash('Successfully Logged in', 'success')
+                    return redirect(url_for('trainer.view_posts'))
                 else:
-                    print()
+                    flash('Invalid Password','danger')
             else:
-                print()
+                flash('User does not exist', 'danger')
     
     return render_template('login.html', form=form)
 
