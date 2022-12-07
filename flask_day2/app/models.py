@@ -2,7 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash
-
+# from __future__ import annotations
+# from sqlalchemy import Column, Table, ForeignKey, Integer
+# from sqlalchemy.orm import Mapped, mapped_column, DeclarativeMeta, relationship
 db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
@@ -77,3 +79,25 @@ class Deck(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+
+# class User(DeclarativeMeta):
+#     pass
+
+# association_table = Table(
+#     "association_table",
+#     User.metadata,
+#     Column("deck_id", ForeignKey("left_deck.id")),
+#     Column("user_id", ForeignKey("right_user.id"))
+# )
+
+# class Parent(User):
+#     __deck__ = "left_table"
+
+#     id: Mapped[int] = mapped_column(primary_key =True)
+#     children: Mapped[list[User]] = relationship(secondary=association_table)
+
+# class Child(User):
+#     __team__ = "right_table"
+
+#     id: Mapped[int] = mapped_column(primary_key=True)

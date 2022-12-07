@@ -37,7 +37,7 @@ def pokedex():
 @login_required
 def my_pokemon():
     posts = Deck.query.all()
-
-    return render_template('view_pokemons.html', posts=posts)
+    
+    return render_template('view_pokemons.html', posts=posts[::-1])
 
         
