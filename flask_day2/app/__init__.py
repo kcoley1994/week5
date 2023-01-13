@@ -5,6 +5,7 @@ from .models import db, User
 from .auth.routes import auth
 from .trainer.routes import trainer
 from .pokemon.routes import pokemon
+from .battle.routes import battle
 from flask_login import LoginManager
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def load_user(user_id):
 app.register_blueprint(auth)
 app.register_blueprint(trainer)
 app.register_blueprint(pokemon)
+app.register_blueprint(battle)
 
 # initialize database to work with app
 db.init_app(app)

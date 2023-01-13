@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}  
+<section>
+  {% if current_user.user_id == my.user_id %}
+  <div class="card">
+      <img src="{{my.pokemon_sprite}}" class="card-img-top" alt="Fissure in Sandstone"/>
+      <div class="card-body">
+        <h5 class="card-title">Pokemon: {{current_user.name}}</h5>
+        <p class="card-text">Abilites: {{my.pokemon_abilities}}</p>
+        <p class="card-text">Base Exp: {{my.pokemon_base_exp}}</p>
+        <p class="card-text">Attack: {{my.pokemon_attack}}</p>
+        <p class="card-text">HP: {{my.pokemon_hp}}</p>
+        <p class="card-text">Defense: {{my.pokemon_defense}}</p>
+      </div>
+  </div>
+  {% endif %}
+  <h1>VS</h1>
+
+  <div class="card">
+    <img src="{{decks.pokemon_sprite}}" class="card-img-top"/>
+    <div class="card-body">
+      <h5 class="card-title">Pokemon: {{decks.name}}</h5>
+      <p class="card-text">Abilites: {{decks.pokemon_abilities}}</p>
+      <p class="card-text">Base Exp: {{decks.pokemon_base_exp}}</p>
+      <p class="card-text">Attack: {{decks.pokemon_attack}}</p>
+      <p class="card-text">HP: {{decks.pokemon_hp}}</p>
+      <p class="card-text">Defense: {{decks.pokemon_defense}}</p>
+      <a href="#!" class="btn btn-primary">Fight</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

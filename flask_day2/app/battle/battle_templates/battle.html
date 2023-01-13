@@ -1,20 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}    
-<h1>Welcome To The Pokemon Universe</h1>
+<h1>Choose Your Opponent</h1>
 <hr>
-<form method ="POST">
-  <div class="input-group">  
-  <div class="form-outline">
-    {{form.search_pokemon(class="form-control", placeholder="Choose Your Pokemon")}}
-  </div>
-  <button type="button" class="btn btn-primary">
-    <i class={{form.search}}></i>
-  </button>
-  </div>
-</form>
-{% if current_user.not_athenticated %}
-<p>Click the link to claim your Pokemon <a href="/signup">Signup</a></p>
-{% endif %}
 {% for user in users %}
 <section class="vh-10" style="background-color:rgb(27, 26, 26);">
   <div class="container py-2 h-100">
@@ -44,7 +31,7 @@
                   </div>
                 </div>
                 <div class="d-flex pt-1">
-                  <a class="btn btn-primary flex-grow-1" href="#" >Team up</a>
+                  <a class="btn btn-primary flex-grow-1" href= "{{url_for('battle.opponent',id=user.id)}}" >Pokemon Battle</a>
                 </div>
               </div>
             </div>
@@ -57,4 +44,3 @@
   
   {% endfor %}
 {% endblock %}
-
